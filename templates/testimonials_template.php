@@ -7,24 +7,23 @@
  */
 
 $TESTIMONIALS_TEMPLATE['menu_header'] = '
-<div class="container">
 	<div class="row">
 		<div class="col-md-12" data-wow-delay="0.2s">
 
 			<div class="carousel slide" data-ride="carousel" id="quote-carousel">
 				<!-- Bottom Carousel Indicators -->
-				{TESTIMONIAL_INDICATORS}
+				{TESTIMONIALS_INDICATORS}
 
 				<!-- Carousel Slides / Quotes -->
 				<div class="carousel-inner text-center">';
 
 $TESTIMONIALS_TEMPLATE['menu_body'] = '
-					<div class="item">
+					<div class="item{TESTIMONIALS_ACTIVE}">
 						<blockquote>
 							<div class="row">
 								<div class="col-sm-8 col-sm-offset-2">
-									<p>{TESTIMONIAL_MESSAGE}</p>
-									<small>{TESTIMONIAL_AUTHOR}</small>
+									<p>{TESTIMONIALS_MESSAGE}</p>
+									<small>{TESTIMONIALS_AUTHOR}</small>
 								</div>
 							</div>
 						</blockquote>
@@ -39,4 +38,4 @@ $TESTIMONIALS_TEMPLATE['menu_footer'] = '
 			</div>
 		</div>
 	</div>
-</div>';
+';

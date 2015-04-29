@@ -31,11 +31,17 @@ class testimonials_shortcodes extends e_shortcode
 	{
 		$indicators = array();
 		if (isset($this->var['count']) && (int) $this->var['count'] > 0) {
-			for ($i = 0; $i < $this->var['count']; $i++) {
+			for ($i = 0; $i < (int) $this->var['count']; $i++) {
 				$indicators[] = '<li data-target="#quote-carousel" data-slide-to="' . $i . '"' . ($i === 0 ? ' class="active"' : '') . '></li>';
 			}
 		}
 		return '<ol class="carousel-indicators">' . implode('', $indicators) . '</ol>';
+	}
+
+
+	function sc_testimonials_active()
+	{
+		return ($this->var['active'] === TRUE ? ' active' : '');
 	}
 
 

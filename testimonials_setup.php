@@ -67,7 +67,7 @@ class testimonials_setup
 			{
 				$insert = array(
 					'tm_id'        => 0,
-					'tm_name'      => $old_record['name'],
+					'tm_name'      => '0.' . $old_record['name'],
 					'tm_url'       => $old_record['homepage'],
 					'tm_message'   => $old_record['text'],
 					'tm_datestamp' => time(),
