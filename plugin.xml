@@ -10,7 +10,7 @@
 	<category>content</category>
 	<copyright></copyright>
 	<adminLinks>
-		<link url="admin_config.php" description="" icon="images/icon_32.png" iconSmall="images/icon_16.png" primary="true" >LAN_CONFIGURE</link>
+		<link url="admin_config.php" description="" icon="images/testimonials_32.png" iconSmall="images/testimonials_16.png" primary="true" >LAN_CONFIGURE</link>
 	</adminLinks>
 	<pluginPrefs>
 		<pref name='tm_menu_items'>3</pref>
