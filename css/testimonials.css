@@ -8,6 +8,8 @@
     /* Next button  */
     /* Changes the position of the indicators */
     /* Changes the color of the indicators */
+    background: none;
+    background-image: none;
 }
 
 #quote-carousel .carousel-control {
@@ -23,16 +25,28 @@
     cursor: pointer;
 }
 
-.carousel-inner {
-    min-height: 300px;
+#quote-carousel .carousel-indicators {
+    bottom: 3px;
 }
 
-.item blockquote {
+#quote-carousel .carousel-indicators .active {
+    background-color: #333;
+}
+
+#quote-carousel .carousel-indicators li {
+    border-color: #333;
+}
+
+#quote-carousel .carousel-inner {
+    /* min-height: 300px; */
+}
+
+#quote-carousel .item blockquote {
     border-left: none;
     margin: 0;
 }
 
-.item blockquote p:before {
+#quote-carousel .item blockquote p:before {
     content: "\f10d";
     font-family: 'Fontawesome';
     float: left;
