@@ -17,5 +17,6 @@
 		<pref name='tm_submit_role'>253</pref>
 		<pref name='tm_use_captcha'>1</pref>
 		<pref name='tm_approval'>1</pref>
+		<pref name='tm_trim'>250</pref>
 	</pluginPrefs>
 </e107Plugin>

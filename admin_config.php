@@ -61,7 +61,7 @@ class testimonials_admin_ui extends e_admin_ui
 			'data'  => 'int',
 			'tab'   => 0,
 		),
-		'tm_page_items'  => array(
+		'tm_trim'  => array(
 			'title' => LAN_TESTIMONIALS_ADMIN_03,
 			'type'  => 'number',
 			'data'  => 'int',
