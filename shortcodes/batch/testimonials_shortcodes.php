@@ -140,8 +140,10 @@ class testimonials_shortcodes extends e_shortcode
 		else
 		{
 			$length = (int) $this->plugPrefs['tm_trim'];
-			$trimmed = $this->_tm_truncate_utf8($this->var['tm_message'], $length, false, true);
-			return $trimmed;
+			$trimmed = $this->_tm_truncate_utf8($this->var['tm_message'], $length, true, false);
+			$remainder = str_replace($trimmed, "", $this->var['tm_message']);
+
+			return $trimmed . '<span class="truncated">' . $remainder . '</span>';
 		}
 	}
 

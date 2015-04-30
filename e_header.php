@@ -35,6 +35,7 @@ class testimonials_e_header
 	function include_components()
 	{
 		e107::css('testimonials', 'css/testimonials.css');
+		e107::js('testimonials', 'js/testimonials.js');
 	}
 
 }
