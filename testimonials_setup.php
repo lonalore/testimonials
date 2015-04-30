@@ -63,6 +63,8 @@ class testimonials_setup
 			$db = e107::getDb('testimonials');
 
 			$old_records = $_SESSION['OLD_TESTIMONIALS'];
+
+			$order = 0;
 			foreach($old_records as $old_record)
 			{
 				$insert = array(
@@ -73,9 +75,12 @@ class testimonials_setup
 					'tm_datestamp' => time(),
 					'tm_blocked'   => ($old_record['allowed'] == 'yes' ? 0 : 1),
 					'tm_ip'        => '',
+					'tm_order'     => $order,
 				);
 
 				$db->insert("testimonials", $insert);
+
+				$order++;
 			}
 
 			unset($_SESSION['OLD_TESTIMONIALS']);

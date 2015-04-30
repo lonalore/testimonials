@@ -22,6 +22,12 @@ class testimonials_admin extends e_admin_dispatcher
 {
 
 	protected $modes = array(
+		'items'  => array(
+			'controller' => 'testimonials_admin_items_ui',
+			'path'       => null,
+			'ui'         => 'testimonials_admin_items_form_ui',
+			'uipath'     => null
+		),
 		'main' => array(
 			'controller' => 'testimonials_admin_ui',
 			'path'       => null,
@@ -29,6 +35,10 @@ class testimonials_admin extends e_admin_dispatcher
 	);
 
 	protected $adminMenu = array(
+		'items/list'   => array(
+			'caption' => LAN_TESTIMONIALS_ADMIN_07,
+			'perm'    => 'P',
+		),
 		'main/prefs' => array(
 			'caption' => LAN_PREFS,
 			'perm'    => 'P',
@@ -71,7 +81,6 @@ class testimonials_admin_ui extends e_admin_ui
 			'title'      => LAN_TESTIMONIALS_ADMIN_04,
 			'type'       => 'userclass',
 			'data'       => 'int',
-			'writeParms' => 'classlist=nobody,main,admin,classes',
 			'tab'        => 0,
 		),
 		'tm_use_captcha' => array(
@@ -90,6 +99,148 @@ class testimonials_admin_ui extends e_admin_ui
 		),
 	);
 }
+
+
+/**
+ * Class testimonials_admin_items_ui.
+ */
+class testimonials_admin_items_ui extends e_admin_ui
+{
+
+	protected $pluginTitle = LAN_PLUGIN_TESTIMONIALS_NAME;
+	protected $pluginName  = 'testimonials';
+	protected $eventName   = 'testimonials-item';
+	protected $table       = "testimonials";
+	protected $pid         = "tm_id";
+	protected $perPage     = 0; //no limit
+	protected $batchDelete = false;
+	protected $sortField   = 'tm_order';
+	protected $listOrder   = "tm_order ASC";
+
+	protected $fields = array(
+		'checkboxes' => array(
+			'title'   => '',
+			'type'    => null,
+			'width'   => '5%',
+			'forced'  => true,
+			'thclass' => 'center',
+			'class'   => 'center',
+		),
+		'tm_id'     => array(
+			'title'    => LAN_TESTIMONIALS_ADMIN_09,
+			'type'     => 'number',
+			'width'    => '5%',
+			'forced'   => true,
+			'readonly' => true,
+			'thclass'  => 'center',
+			'class'    => 'center',
+		),
+		'tm_name'  => array(
+			'title'    => LAN_TESTIMONIALS_ADMIN_10,
+			'type'     => 'text',
+			'inline'   => false,
+			'width'    => 'auto',
+			'thclass'  => 'left',
+			'readonly' => true,
+			'validate' => true,
+		),
+		'tm_url'   => array(
+			'title'     => LAN_TESTIMONIALS_ADMIN_11,
+			'type'     => 'text',
+			'inline'   => true,
+			'width'    => 'auto',
+			'thclass'  => 'left',
+			'readonly' => false,
+			'validate' => true,
+		),
+		'tm_blocked' => array(
+			'title'      => LAN_TESTIMONIALS_ADMIN_12,
+			'type'       => 'dropdown',
+			'width'      => 'auto',
+			'readonly'   => false,
+			'inline'     => true,
+			'batch'      => true,
+			'filter'     => true,
+			'writeParms' => array(
+				0 => LAN_TESTIMONIALS_ADMIN_13,
+				1 => LAN_TESTIMONIALS_ADMIN_14,
+			),
+			'readParms'  => array(
+				0 => LAN_TESTIMONIALS_ADMIN_13,
+				1 => LAN_TESTIMONIALS_ADMIN_14,
+			),
+			'thclass'    => 'center',
+			'class'      => 'center',
+		),
+		'tm_message'   => array(
+			'title'     => LAN_TESTIMONIALS_ADMIN_15,
+			'type'      => 'textarea',
+			'inline'    => true,
+			'width'     => 'auto',
+			'thclass'   => 'left',
+			'readParms' => 'expand=...&truncate=150&bb=1',
+			'readonly'  => false,
+		),
+		'tm_order'  => array(
+			'title'   => LAN_TESTIMONIALS_ADMIN_16,
+			'type'    => 'text',
+			'width'   => 'auto',
+			'thclass' => 'center',
+			'class'   => 'center',
+		),
+		'options'    => array(
+			'title'   => LAN_TESTIMONIALS_ADMIN_17,
+			'type'    => null,
+			'width'   => '10%',
+			'forced'  => true,
+			'thclass' => 'center last',
+			'class'   => 'center',
+			'sort'    => true,
+		),
+	);
+
+	protected $fieldpref = array(
+		'checkboxes',
+		'tm_id',
+		'tm_name',
+		'tm_url',
+		'tm_blocked',
+		'tm_message',
+		'tm_order',
+		'options',
+	);
+
+	function init()
+	{
+	}
+
+	public function beforeCreate($data)
+	{
+		if(empty($data['tm_order']))
+		{
+			$c = e107::getDb()->count('testimonials');
+			$data['tm_order'] = $c ? $c : 0;
+		}
+
+		return $data;
+	}
+
+
+	public function beforeUpdate($data, $old_data, $id)
+	{
+	}
+
+}
+
+
+/**
+ * Class testimonials_admin_items_form_ui.
+ */
+class testimonials_admin_items_form_ui extends e_admin_form_ui
+{
+
+}
+
 
 
 new testimonials_admin();
