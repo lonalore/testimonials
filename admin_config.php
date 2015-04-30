@@ -109,7 +109,7 @@ class testimonials_admin_items_ui extends e_admin_ui
 
 	protected $pluginTitle = LAN_PLUGIN_TESTIMONIALS_NAME;
 	protected $pluginName  = 'testimonials';
-	protected $eventName   = 'testimonials-item';
+	protected $eventName   = 'testimonials_message';
 	protected $table       = "testimonials";
 	protected $pid         = "tm_id";
 	protected $perPage     = 0; //no limit
@@ -151,7 +151,6 @@ class testimonials_admin_items_ui extends e_admin_ui
 			'width'    => 'auto',
 			'thclass'  => 'left',
 			'readonly' => false,
-			'validate' => true,
 		),
 		'tm_blocked' => array(
 			'title'      => LAN_TESTIMONIALS_ADMIN_12,
@@ -180,6 +179,7 @@ class testimonials_admin_items_ui extends e_admin_ui
 			'thclass'   => 'left',
 			'readParms' => 'expand=...&truncate=150&bb=1',
 			'readonly'  => false,
+			'validate' => true,
 		),
 		'tm_order'  => array(
 			'title'   => LAN_TESTIMONIALS_ADMIN_16,

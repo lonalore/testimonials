@@ -97,12 +97,9 @@ class testimonials_menu
 		while($row = $db->fetch())
 		{
 			$item = $row;
-			// If the author is not a registered user, we have to get the nickname.
-			if((int) $row['user_id'] === 0)
-			{
-				list($tm_uid, $tm_nick) = explode(".", $row['tm_name'], 2);
-				$item['user_name'] = $tm_nick;
-			}
+
+			list($tm_uid, $tm_nick) = explode(".", $row['tm_name'], 2);
+			$item['user_name'] = $tm_nick;
 
 			if (!empty($item['tm_url'])) {
 				if (strpos($item['tm_url'], 'http') === FALSE) {
